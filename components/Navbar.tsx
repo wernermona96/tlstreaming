@@ -10,7 +10,7 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 
-const TOP_OFFSET = 66;
+const TOP_OFFSET = 66; /* ajouter un background sombre en scroll*/
 
 const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
@@ -18,6 +18,7 @@ const Navbar = () => {
   const [showBackground, setShowBackground] = useState(false);
 
   useEffect(() => {
+    /* c'est la function pour configurer le background scroll */
     const handleScroll = () => {
       console.log(window.scrollY);
       if (window.scrollY >= TOP_OFFSET) {
@@ -44,7 +45,11 @@ const Navbar = () => {
 
   return (
     <nav className="w-full fixed z-40">
-      <div className="px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 bg-zink-900 bg-opacity-90">
+      <div
+        className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${
+          showBackground ? "bg-zinc-900 bg-opacity-90" : ""
+        }`}
+      >
         <img src="/img/tls.png" alt="logo" className="h-4 lg:h-24" />
 
         <div className="ml-8 flex-row gap-7 hidden lg:flex">
